@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>register</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container{
+                display: flex;
+                flex-direction: column;
+                width: 25vw;
+            }
+
+            input {
+                margin: 0.25em 0em 1em 0em;
+                outline: none;
+                padding: 0.5em;
+                border: none;
+                background-color: rgb(225, 225, 225);
+                border-radius: 0.25em;
+                color: black;
+            }
+
+            h1, p {
+                text-align: center;
+            }
+
+            button {
+                padding: 0.75em;
+                border: none;
+                outline: none;
+                background-color: rgb(68, 18, 232);
+                color: white;
+                border-radius: 0.25em;
+            }  
+            .fcc-btn {
+                background-color: #199319;
+                color: white;
+            }
+            .a{
+                text-decoration: none;
+            }    
+            a:link{
+                 text-decoration: none!important;
+            }
+            
+        </style>
+    </head>
+    </div>
+    <body>
+        <form method="post" enctype="multipart/form-data" >
+         {% csrf_token %}
+            <div  class="container">
+              <h1>Upload</h1>
+              <p>Kindly fill in this to upload</p>
+              <label for="name"><b>name</b></label>
+              <input
+                type="text"
+                
+                name="name"
+                id="name"
+                required
+              />
+      
+                  
+              <label for="des"><b>description</b></label>
+              <textarea
+                
+                name="des"
+                id="des"
+                required 
+              ></textarea>
+              <label for="image"><b>upload image</b></label>
+              <input type="file" name="image">
+                   
+              <button type="submit" id="submit">Register</button>
+            </div>
+           <!-- wrapping the text inside the p tag with a tag for routing to the login page URL-->
+            <!-- the # must ideally be replaced by the login page URL -->
+            
+          </form>
+            <table class="table" border="t1">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">description</th>
+            <th scope="col">image</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for i in upload %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{i.name}}</td>
+            <td>{{i.des}}</td>
+            <td> {% load static %} <img src="{% static "{{i.image}}" %}"></td>
+            <td><a href="/delete/{{i.id}}" class="fcc-btn" >delete</a>
+                <a href="/update/{{i.id}}" class="fcc-btn" >update</a></td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </body>
+</html>

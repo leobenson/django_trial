@@ -41,8 +41,16 @@
                 color: white;
                 border-radius: 0.25em;
             }  
-            
-
+            .fcc-btn {
+                background-color: #199319;
+                color: white;
+            }
+            .a{
+                text-decoration: none;
+            }    
+            a:link{
+                 text-decoration: none!important;
+            }
             
         </style>
     </head>
@@ -51,43 +59,36 @@
         <form method="post" enctype="multipart/form-data" >
          {% csrf_token %}
             <div  class="container">
-              <h1>Register</h1>
-              <p>Kindly fill in this form to register.</p>
-              <label for="username"><b>Username</b></label>
+              <h1>Update</h1>
+              <p>Kindly fill in this to update</p>
+              <label for="name"><b>name</b></label>
               <input
                 type="text"
                 
-                name="username"
-                id="username"
+                name="name"
+                id="name"
+                value="{{update.name}}"
                 required
               />
       
-              <label for="email"><b>Email</b></label>
-              <input
-                type="text"
+                  
+              <label for="des"><b>description</b></label>
+              <textarea
                 
-                name="email"
-                id="email"
-                required
-              />
-      
-              <label for="pwd"><b>Password</b></label>
-              <input
-                type="password"
-                
-                name="pwd"
-                id="pwd"
+                name="des"
+                id="des"
+                value="{{update.des}}"
                 required 
-              />
+              >{{update.des}}</textarea>
               <label for="image"><b>upload image</b></label>
               <input type="file" name="image">
                    
-              <button type="submit">Register</button>
+              <button type="submit" id="submit">update</button>
+              <a class="button" href="/upload/">back</a>
             </div>
            <!-- wrapping the text inside the p tag with a tag for routing to the login page URL-->
             <!-- the # must ideally be replaced by the login page URL -->
             
           </form>
-      
     </body>
 </html>
