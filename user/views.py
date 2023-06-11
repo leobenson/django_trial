@@ -18,6 +18,10 @@ def upload(request):
         return redirect('/upload')
     
     queryset = reg.objects.all()
+
+    if request.GET.get('search'):
+        queryset =queryset.filter(name__icontains = request.GET.get('search'))
+
     context = {'upload':queryset}
     return render(request,"upload.html",context)        
 

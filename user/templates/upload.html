@@ -6,7 +6,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <style>
+          
             form{
                 display: flex;
                 flex-direction: column;
@@ -52,6 +55,9 @@
                  text-decoration: none!important;
             }
             
+            .table{
+              border:1 ;
+            }
         </style>
     </head>
     </div>
@@ -87,7 +93,22 @@
             <!-- the # must ideally be replaced by the login page URL -->
             
           </form>
-            <table class="table" border="t1">
+          <div class="mt-4">
+            <div class="mx-auto col-4">
+              <div class="mb-3">
+                <form>
+                <label for="search" class="form-label">search</label>
+                <input name="search" type="text">
+                <button type="submit" class="fcc-btn ">search</button>
+              </div>
+              
+            </div>
+          </form>
+          </div>
+          <div class="ml-5">
+            <div class="mx-auto col-4">
+              <div class="mb-3">
+            <table class="table mt-5">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -103,12 +124,15 @@
             <th scope="row">{{forloop.counter}}</th>
             <td>{{i.name}}</td>
             <td>{{i.des}}</td>
-            <td> {% load static %} <img src="{% static "{{i.image}}" %}"></td>
+            <td> <img src="/media/{{i.image}}" height="100px" width="60px"></td>
             <td><a href="/delete/{{i.id}}" class="fcc-btn" >delete</a>
                 <a href="/update/{{i.id}}" class="fcc-btn" >update</a></td>
           </tr>
           {%endfor%}
         </tbody>
       </table>
+    </div>
+    </div>
+    </div>
     </body>
 </html>
